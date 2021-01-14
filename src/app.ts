@@ -8,4 +8,5 @@ console.clear();
 
 // FactoryMethodTest.test();
 // BuilderTest.test();
-//AbstractFactoryTest.test();
+// AbstractFactoryTest.test();
+// FacadeTest.test();
