@@ -1,20 +1,21 @@
-namespace Adapter {
-  //target (our payment object interface)
+//target (our payment object interface)
 interface PaymentTransaction {
     id: string;
     total: number;
     submitPayment: Function;
 }
+
 //our payment class
 class Payment implements PaymentTransaction {
-    
-    constructor(public id: string, public total: number){
+
+    constructor(public id: string, public total: number) {
     }
-    
-     submitPayment() {
-        console.log(`Proprietary Payment Amount: ${this.total} - ID: ${this.id}`);
+
+    submitPayment() {
+        console.log(`Proprietary Payment Amount: ${ this.total } - ID: ${ this.id }`);
     }
 }
+
 // Adaptee: what we want to be adapted with (3rd party method)
 interface ThirdPartyPayment {
     id: number; //abstract away the type in the adapter
@@ -24,11 +25,11 @@ interface ThirdPartyPayment {
 
 class AmazonPayment implements ThirdPartyPayment {
 
-    constructor(public id: number, public amount: number){
+    constructor(public id: number, public amount: number) {
     }
-    
-     sendPayment() {
-        console.log(`3rd Party Payment Amount: ${this.amount} - ID: ${this.id}`);
+
+    sendPayment() {
+        console.log(`3rd Party Payment Amount: ${ this.amount } - ID: ${ this.id }`);
     }
 }
 
@@ -36,10 +37,11 @@ enum PaymentType {
     Amazon,
     Proprietary
 }
+
 //adapter
 class PaymentAdapter implements PaymentTransaction {
 
-    constructor(public id: string,public  total: number,public  type: PaymentType) {
+    constructor(public id: string, public  total: number, public  type: PaymentType) {
     }
 
     public submitPayment() {
@@ -53,16 +55,18 @@ class PaymentAdapter implements PaymentTransaction {
             const payment = new Payment(id, this.total);
             payment.submitPayment();
         } else {
-            throw new Error("Invalid Payment Type");
+            throw new Error('Invalid Payment Type');
         }
     }
 }
 
-//How to use
+// how to use
+export class AdapterTest {
+    static test() {
+        const payment: PaymentTransaction = new PaymentAdapter('123', 47.99, PaymentType.Proprietary);
+        payment.submitPayment();
 
-const payment:PaymentTransaction = new PaymentAdapter("123", 47.99, PaymentType.Proprietary);
-payment.submitPayment();
-
-const payment2:PaymentTransaction = new PaymentAdapter("543", 99.99, PaymentType.Amazon);
-payment2.submitPayment();
+        const payment2: PaymentTransaction = new PaymentAdapter('543', 99.99, PaymentType.Amazon);
+        payment2.submitPayment();
+    }
 }
