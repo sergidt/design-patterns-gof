@@ -56,7 +56,7 @@ export class BridgeTest {
         textMessage.send();
 
         const emailMessageSender: MessageSender = new EmailMessageSender();
-        const emailMessage: Message = new TextMessage(emailMessageSender);
+        const emailMessage: Message = new EmailMessage(emailMessageSender);
         emailMessage.send();
     }
 }
