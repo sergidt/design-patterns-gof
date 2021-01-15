@@ -1,160 +1,5 @@
-//////////// UTILS ///////////////
-
-function sleep(ms): Promise<boolean> {
-    return new Promise<boolean>(resolve => setTimeout(() => resolve(true), ms));
-}
-
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-//////////////
-
-export class SystemController {
-    private static instance: SystemController;
-
-    private static config: HomeAutomationEnvironmentData;
-
-    private constructor() {
-    }
-
-    static getInstance(): SystemController {
-        if (SystemController.instance == null) {
-            SystemController.instance = new SystemController();
-        }
-        return SystemController.instance;
-    }
-
-    static startSystem(devices: Array<Device>) {
-        console.log(`%c[SystemController]: Starting system...`, 'font-weight: bold; font-size: 16px');
-        SystemController.config = EnvironmentDirector.build(devices);
-
-    }
-
-    static stopSystem() {
-        SystemController.config = null;
-        console.log(`%c[SystemController]: System stopped!`, 'font-weight: bold; font-size: 16px');
-    }
-}
-
-//// BUILDER
-enum HomeAutomationMode {
-    OnlyLights = 'Only lights',
-    OnlyAirConditioning = 'Only air conditioning',
-    OnlyAlarm = 'Only alarm',
-    AllConnected = 'All connected'
-}
-
-type HomeAutomationEnvironmentData = Partial<{
-    mode: HomeAutomationMode;
-    connectors: Array<DeviceConnector>;
-    startTime: string;
-    stopTime: string;
-    username: string;
-}>;
-
-interface HomeAutomationEnvironment {
-    setMode(mode: HomeAutomationMode): HomeAutomationEnvironment;
-
-    registerDevices(devices: Array<Device>): HomeAutomationEnvironment;
-
-    setUsername(user: string): HomeAutomationEnvironment;
-
-    start(): HomeAutomationEnvironment;
-
-    stop(): HomeAutomationEnvironment;
-
-    getConfig(): HomeAutomationEnvironmentData;
-}
-
-class EnvironmentBuilder implements HomeAutomationEnvironment {
-    constructor(private _config: HomeAutomationEnvironmentData = {}) {
-    }
-
-    setMode(mode: HomeAutomationMode): HomeAutomationEnvironment {
-        this._config.mode = mode;
-        return this;
-    }
-
-    registerDevices(devices: Array<Device>): HomeAutomationEnvironment {
-        this._config.connectors = devices.map(device => ConnectorFactory.createConnector(device));
-        console.log(`%c[EnvironmentBuilder]: ${ devices.length } devices registered!`, 'color: blue');
-        return this;
-    }
-
-    setUsername(user: string): HomeAutomationEnvironment {
-        this._config.username = user;
-        return this;
-    }
-
-    start(): HomeAutomationEnvironment {
-        console.log(`%c[${ this._config.mode } environment]: Starting up...`, 'color: orange');
-        this._config.connectors.forEach(connector => connector.connect());
-        return this;
-    }
-
-    stop(): HomeAutomationEnvironment {
-        console.log(`%c[${ this._config.mode } environment]: Shutting down...`, 'color: orange');
-        return this;
-    }
-
-    getConfig(): HomeAutomationEnvironmentData {
-        return this._config;
-    }
-}
-
-class EnvironmentDirector {
-    static build(devices: Array<Device>): HomeAutomationEnvironmentData {
-        return new EnvironmentBuilder()
-            .setMode(HomeAutomationMode.AllConnected)
-            .setUsername('Sergi Dote')
-            .registerDevices(devices)
-            .start()
-            .getConfig();
-    }
-}
-
-////////////////////
-
-export enum DeviceType {
-    Shutter = 'Shutter',
-    Light = 'Light',
-    AirConditioning = 'Air Conditioning',
-    External = 'External',
-    Alarm = 'Alarm'
-}
-
-export enum ExternalSource {
-    Alexa = 'Alexa',
-    GoogleHome = 'Google Home',
-    MusicSystem = 'Music System',
-}
-
-export interface Connectable {
-    connect();
-
-    disconnect();
-}
-
-export class Device implements Connectable {
-    constructor(public name: string, public type: DeviceType) {
-    }
-
-    connect() {
-        console.log(`%c${ this.name } device ON!`, 'color: #008800');
-    }
-
-    disconnect() {
-        console.log(`%c${ this.name } device OFF!`, 'color: #AA0000');
-    }
-}
-
-export class ExternalDevice extends Device {
-    public externalSource: ExternalSource;
-
-    constructor(name: string, externalSource: ExternalSource) {
-        super(name, DeviceType.External);
-        this.externalSource = externalSource;
-    }
-}
+import { Connectable, Device, DeviceType, ExternalDevice, ExternalSource, Task } from './home-automation-system';
+import { randomInt, sleep } from './utils';
 
 export interface DeviceConnector extends Connectable {
     name: string;
@@ -168,7 +13,7 @@ export abstract class BaseConnector implements DeviceConnector {
     public lastDisconnection: number;
 
     protected constructor(public device: Device) {
-        this.name = `${ device.type }: ${ device.name }`;
+        this.name = `${ device.type } Connector: ${ device.name }`;
     }
 
     connect() {
@@ -180,6 +25,11 @@ export abstract class BaseConnector implements DeviceConnector {
     disconnect() {
         this.device.disconnect();
         this.lastDisconnection = new Date().getTime();
+    }
+
+    executeTask(task: Task) {
+        console.log(`%c${ this.name } sending task ${ task.type } to bound device -> ${ this.device.name }`, 'color: #AA0000');
+        this.device.executeTask(task);
     }
 
     private loop() {

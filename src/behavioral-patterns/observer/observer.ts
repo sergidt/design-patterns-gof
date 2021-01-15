@@ -11,7 +11,7 @@ export class Message {
 }
 
 export abstract class Observer {
-    private id: number;
+    public readonly id: number;
 
     protected constructor() {
         this.id = new Date().getTime();

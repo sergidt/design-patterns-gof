@@ -10,12 +10,26 @@ Descripción e implementación de los patrones de diseños GoF
 
 EL código deber ser implementado en el fichero app.ts y en cada guardado se recompila automáticamente, aplicando los cambios
 
-
 ## Introducción
 
 * Fueron creados por la conocida Gang of Four (de ahí su nombre): Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
-* 23 patrones clasificados en 3 tipos: 
+* 23 patrones clasificados en 3 tipos:
     * Creational
     * Structural
     * Behavioral
+
+# Falten
+
+* Composite
+* Decorator
+* Flyweight
+* Chain of responsibility
+* Interpreter
+* Iterator
+* Mediator
+* Memento
+* State
+* Strategy
+* Template method
+* Visitor
