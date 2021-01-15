@@ -1,5 +1,5 @@
 import { ConnectorFactory, DeviceConnector } from './connectors';
-import { Device } from './home-automation-system';
+import { Device } from './devices';
 
 export enum HomeAutomationMode {
     OnlyLights = 'Only lights',

@@ -1,4 +1,6 @@
-import { Device, DeviceType, ExternalDevice, ExternalSource, SystemController } from './home-automation-system/home-automation-system';
+import { DeviceType, ExternalSource } from './home-automation-system/definitions';
+import { Device, ExternalDevice } from './home-automation-system/devices';
+import { SystemController } from './home-automation-system/system-controller';
 
 console.clear();
 

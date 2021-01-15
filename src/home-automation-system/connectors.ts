@@ -1,4 +1,5 @@
-import { Connectable, Device, DeviceType, ExternalDevice, ExternalSource, Task } from './home-automation-system';
+import { Connectable, DeviceType, ExternalSource, Task } from './definitions';
+import { Device, ExternalDevice } from './devices';
 import { randomInt, sleep } from './utils';
 
 export interface DeviceConnector extends Connectable {
