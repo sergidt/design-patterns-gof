@@ -16,8 +16,31 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 
 * 23 patrones clasificados en 3 tipos:
     * Creational
+        * Abstract Factory
+        * Builder
+        * Factory Method
+        * Prototype
+        * Singleton
     * Structural
+        * Adapter
+        * Bridge
+        * Composite
+        * Decorator
+        * Facade
+        * Flyweight
+        * Proxy
     * Behavioral
+        * Chain of Responsibility
+        * Command
+        * Interpreter
+        * Iterator
+        * Mediator
+        * Memento
+        * Observer
+        * State
+        * Strategy
+        * Template Method
+        * Visitor
 
 # Falten
 

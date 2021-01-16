@@ -1,26 +1,28 @@
 {
-  "name": "design-patterns-gof",
-  "version": "0.0.1",
-  "description": "Design Patterns: Gang of Four Patterns",
-  "scripts": {
-    "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sergidt/design-patterns-gof.git"
-  },
-  "author": "Sergi Dote Teixidor",
-  "license": "MIT",
-  "dependencies": {
-    "rxjs": "^6.6.3"
-  },
-  "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "typescript": "4.1.2",
-    "webpack": "^4.19.0",
-    "webpack-cli": "^3.0.4",
-    "webpack-dev-server": "^3.1.4"
-  }
+    "name": "design-patterns-gof",
+    "version": "0.0.1",
+    "description": "Design Patterns: Gang of Four Patterns",
+    "scripts": {
+        "dev": "webpack --mode development",
+        "start": "webpack-dev-server --mode development",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sergidt/design-patterns-gof.git"
+    },
+    "author": "Sergi Dote Teixidor",
+    "license": "MIT",
+    "dependencies": {
+        "rxjs": "^6.6.3",
+        "zero-md": "^2.0.1"
+    },
+    "devDependencies": {
+        "awesome-typescript-loader": "^5.2.1",
+        "typescript": "4.1.2",
+        "webpack": "^4.19.0",
+        "source-map-loader": "^1.0.0",
+        "webpack-cli": "^3.0.4",
+        "webpack-dev-server": "^3.1.4"
+    }
 }
