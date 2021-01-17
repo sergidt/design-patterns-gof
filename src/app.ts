@@ -1,5 +1,3 @@
-import { Exercise } from './exercise/main';
-
 console.clear();
 
 // AdapterTest.test();
@@ -13,7 +11,9 @@ console.clear();
 // AbstractFactoryTest.test();
 // FacadeTest.test();
 
+// VisitorTest.test();
+
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
-Exercise.execute();
+//Exercise.execute();
 

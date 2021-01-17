@@ -1,97 +1,148 @@
-export class Message {
-    private readonly messageContent: string;
+export interface Router // Visitable
+{
+    sendData(data: string);
 
-    constructor(m: string) {
-        this.messageContent = m;
+    acceptData(data: string);
+
+    accept(v: RouterVisitor);
+}
+
+export class DLinkRouter implements Router {
+
+    sendData(data: string) {
+        console.log(`DLinkRouter: sendData ${ data }`);
     }
 
-    getMessageContent(): string {
-        return this.messageContent;
+    acceptData(data: string) {
+        console.log(`DLinkRouter: acceptData ${ data }`);
+    }
+
+    accept(v: RouterVisitor) {
+        v.visit(this);
     }
 }
 
-export abstract class Visitor {
-    public readonly id: number;
+export class LinkSysRouter implements Router {
 
-    protected constructor() {
-        this.id = new Date().getTime();
+    sendData(data: string) {
+        console.log(`LinkSysRouter: sendData ${ data }`);
     }
 
-    abstract update(m: Message);
-}
-
-export interface Observable {
-    subscribe(o: Visitor);
-
-    unsubscribe(o: Visitor);
-
-    notify(m: Message);
-}
-
-export class MessagePublisher implements Observable {
-
-    private observers: Array<Visitor> = [];
-
-    subscribe(o: Visitor) {
-        this.observers.push(o);
+    acceptData(data: string) {
+        console.log(`LinkSysRouter: acceptData ${ data }`);
     }
 
-    unsubscribe(o: Visitor) {
-        this.observers = this.observers.filter(_ => _.id !== o.id);
-    }
-
-    notify(m: Message) {
-        this.observers.forEach(_ => _.update(m));
+    accept(v: RouterVisitor) {
+        v.visit(this);
     }
 }
 
-export class MessageSubscriberOne extends Visitor {
-    constructor() {
-        super();
+export class TPLinkRouter implements Router {
+    sendData(data: string) {
+        console.log(`TPLinkRouter: sendData ${ data }`);
     }
 
-    update(m: Message) {
-        console.log('MessageSubscriberOne :: ' + m.getMessageContent());
-    }
-}
-
-export class MessageSubscriberTwo extends Visitor {
-    constructor() {
-        super();
+    acceptData(data: string) {
+        console.log(`TPLinkRouter: acceptData ${ data }`);
     }
 
-    update(m: Message) {
-        console.log('MessageSubscriberTwo :: ' + m.getMessageContent());
+    accept(v: RouterVisitor) {
+        v.visit(this);
     }
 }
 
-export class MessageSubscriberThree extends Visitor {
-    constructor() {
-        super();
+export interface RouterVisitor {
+    visit(router: Router);
+}
+
+export class LinuxConfigurator implements RouterVisitor {
+
+    visit(router: Router) {
+        if (router instanceof TPLinkRouter) {
+            this.visitTPLinkRouter(router);
+        } else if (router instanceof DLinkRouter) {
+            this.visitDLinkRouter(router);
+        } else if (router instanceof LinkSysRouter) {
+            this.visitLinkSysRouter(router);
+        }
     }
 
-    update(m: Message) {
-        console.log('MessageSubscriberThree :: ' + m.getMessageContent());
+    private visitDLinkRouter(router: DLinkRouter) {
+        console.log('DLinkRouter Configuration for Linux complete !!');
+    }
+
+    private visitTPLinkRouter(router: TPLinkRouter) {
+        console.log('TPLinkRouter Configuration for Linux complete !!');
+    }
+
+    private visitLinkSysRouter(router: LinkSysRouter) {
+        console.log('LinkSysRouter Configuration for Linux complete !!');
+    }
+}
+
+export class WindowsConfigurator implements RouterVisitor {
+    visit(router: Router) {
+        if (router instanceof TPLinkRouter) {
+            this.visitTPLinkRouter(router);
+        } else if (router instanceof DLinkRouter) {
+            this.visitDLinkRouter(router);
+        } else if (router instanceof LinkSysRouter) {
+            this.visitLinkSysRouter(router);
+        }
+    }
+
+    private visitDLinkRouter(router: DLinkRouter) {
+        console.log('DLinkRouter Configuration for Windows complete !!');
+    }
+
+    private visitTPLinkRouter(router: TPLinkRouter) {
+        console.log('TPLinkRouter Configuration for Windows complete !!');
+    }
+
+    private visitLinkSysRouter(router: LinkSysRouter) {
+        console.log('LinkSysRouter Configuration for Windows complete !!');
     }
 }
 
 // How to use?
-export class ObserverTest {
+export class VisitorTest {
     static test() {
-        const s1: MessageSubscriberOne = new MessageSubscriberOne();
-        const s2: MessageSubscriberTwo = new MessageSubscriberTwo();
-        const s3: MessageSubscriberThree = new MessageSubscriberThree();
+        let windowsConfigurator: WindowsConfigurator;
+        let linuxConfigurator: LinuxConfigurator;
+        let dlink: DLinkRouter;
+        let tplink: TPLinkRouter;
+        let linksys: LinkSysRouter;
 
-        const p: MessagePublisher = new MessagePublisher();
+        function setUp() {
+            windowsConfigurator = new WindowsConfigurator();
+            linuxConfigurator = new LinuxConfigurator();
 
-        p.subscribe(s1);
-        p.subscribe(s2);
+            dlink = new DLinkRouter();
+            tplink = new TPLinkRouter();
+            linksys = new LinkSysRouter();
+        }
 
-        p.notify(new Message('First Message'));   //s1 and s2 will receive the update
+        function testDlink() {
+            dlink.accept(windowsConfigurator);
+            dlink.accept(linuxConfigurator);
+        }
 
-        p.unsubscribe(s1);
-        p.unsubscribe(s3);
+        function testTPLink() {
+            tplink.accept(windowsConfigurator);
+            tplink.accept(linuxConfigurator);
+        }
 
-        p.notify(new Message('Second Message')); //s2 and s3 will receive the update
+        function testLinkSys() {
+            linksys.accept(windowsConfigurator);
+            linksys.accept(linuxConfigurator);
+        }
+
+        setUp();
+
+        testDlink();
+
+        testLinkSys();
+
+        testTPLink();
     }
 }
