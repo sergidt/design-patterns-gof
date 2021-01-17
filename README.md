@@ -49,7 +49,6 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 * Flyweight
 * Chain of responsibility
 * Interpreter
-* Iterator
 * Mediator
 * Memento
 * State

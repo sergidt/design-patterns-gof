@@ -1,3 +1,5 @@
+import { IteratorTest } from './patterns/behavioral-patterns/iterator/iterator';
+
 console.clear();
 
 // AdapterTest.test();
@@ -12,6 +14,7 @@ console.clear();
 // FacadeTest.test();
 
 // VisitorTest.test();
+IteratorTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
