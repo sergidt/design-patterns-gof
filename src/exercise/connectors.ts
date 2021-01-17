@@ -13,6 +13,8 @@ export abstract class BaseConnector implements DeviceConnector {
     public lastConnection: number;
     public lastDisconnection: number;
 
+    loopCount = 0;
+
     protected constructor(public device: Device) {
         this.name = `${ device.type } Connector: ${ device.name }`;
     }
@@ -34,8 +36,11 @@ export abstract class BaseConnector implements DeviceConnector {
     }
 
     private loop() {
-        const randomDelay = randomInt(10000, 20000);
-        console.log(`${ this.name } message...`);
+        const randomDelay = randomInt(20000, 40000);
+        if (this.loopCount > 0)
+            console.log(`%c${ this.name } message... `, 'color: #AA00AA');
+
+        this.loopCount++;
         setTimeout(this.loop.bind(this), randomDelay);
     }
 
