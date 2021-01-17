@@ -1,3 +1,10 @@
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
 export class Message {
     private readonly messageContent: string;
 
@@ -11,10 +18,10 @@ export class Message {
 }
 
 export abstract class Observer {
-    public readonly id: number;
+    public readonly id: string;
 
     protected constructor() {
-        this.id = new Date().getTime();
+        this.id = uuid();
     }
 
     abstract update(m: Message);
@@ -86,12 +93,13 @@ export class ObserverTest {
 
         p.subscribe(s1);
         p.subscribe(s2);
+        p.subscribe(s3);
 
-        p.notify(new Message('First Message'));   //s1 and s2 will receive the update
+        p.notify(new Message('First Message'));
 
         p.unsubscribe(s1);
         p.unsubscribe(s3);
 
-        p.notify(new Message('Second Message')); //s2 and s3 will receive the update
+        p.notify(new Message('Second Message'));
     }
 }

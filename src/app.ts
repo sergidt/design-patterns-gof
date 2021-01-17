@@ -1,4 +1,4 @@
-import { IteratorTest } from './patterns/behavioral-patterns/iterator/iterator';
+import { ObserverTest } from './patterns/behavioral-patterns/observer/observer';
 
 console.clear();
 
@@ -14,7 +14,9 @@ console.clear();
 // FacadeTest.test();
 
 // VisitorTest.test();
-IteratorTest.test();
+// IteratorTest.test();
+
+ObserverTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
