@@ -11,4 +11,4 @@
 * Invoker: Quien invoca el command.
 * Receiver: Receptor y ejecutor de la operación.
 
-![Abstract Command pattern](pattern.gif)
+![Observer pattern](pattern.gif)

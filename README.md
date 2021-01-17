@@ -36,7 +36,7 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
         * Iterator
         * Mediator
         * Memento
-        * Observer
+        * Visitor
         * State
         * Strategy
         * Template Method

@@ -14,7 +14,7 @@
 
 * Observable o Subject: Entidad que define las operaciones para añadir o quitar observers
 * Concrete Observable o Subject: Clase concreta. Mantiene el estado del objeto y cuando cambiaa, notifica a los Observers.
-* Observer: Entidad que define las operaciones que nos permitirán la notificación.
-* Concrete Observer: Concreción de la clase Observer.
+* Command: Entidad que define las operaciones que nos permitirán la notificación.
+* Concrete Command: Concretación de la clase Command.
 
-![Observer pattern](pattern.png)
+![Visitor pattern](pattern.jpg)
