@@ -1,4 +1,4 @@
-# Command
+# Observer
 
 ## Finalidad
 

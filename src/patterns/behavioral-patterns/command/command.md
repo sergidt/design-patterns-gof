@@ -7,8 +7,8 @@
 
 ## Participantes
 
-* Command: nos permite declarar la operación y la función para poder ejecutarla. Internamente tiene referencia al receptor del command.
+* Memento: nos permite declarar la operación y la función para poder ejecutarla. Internamente tiene referencia al receptor del command.
 * Invoker: Quien invoca el command.
 * Receiver: Receptor y ejecutor de la operación.
 
-![Observer pattern](pattern.gif)
+![Command pattern](pattern.gif)

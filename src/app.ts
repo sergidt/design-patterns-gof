@@ -1,4 +1,4 @@
-import { ObserverTest } from './patterns/behavioral-patterns/observer/observer';
+import { MementoTest } from './patterns/behavioral-patterns/memento/memento';
 
 console.clear();
 
@@ -16,7 +16,9 @@ console.clear();
 // VisitorTest.test();
 // IteratorTest.test();
 
-ObserverTest.test();
+// ObserverTest.test();
+
+MementoTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 

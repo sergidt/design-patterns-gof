@@ -31,7 +31,7 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
         * Proxy
     * Behavioral
         * Chain of Responsibility
-        * Command
+        * Memento
         * Interpreter
         * Iterator
         * Mediator
@@ -50,7 +50,6 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 * Chain of responsibility
 * Interpreter
 * Mediator
-* Memento
 * State
 * Strategy
 * Template method

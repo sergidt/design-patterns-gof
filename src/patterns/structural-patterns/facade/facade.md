@@ -1,4 +1,4 @@
-# Proxy
+# Facade
 
 ## Finalidad
 
@@ -10,5 +10,5 @@
 
 * Cuando necesitemos simplificar y unificar una interface grande o un conjunto de ellas
 
-![Proxy pattern](pattern.png)
+![Facade pattern](pattern.png)
 
