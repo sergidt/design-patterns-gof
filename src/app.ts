@@ -1,4 +1,4 @@
-import { MementoTest } from './patterns/behavioral-patterns/memento/memento';
+import { StateTest } from './patterns/behavioral-patterns/state/state';
 
 console.clear();
 
@@ -18,8 +18,9 @@ console.clear();
 
 // ObserverTest.test();
 
-MementoTest.test();
+// MementoTest.test();
 
+StateTest.test();
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
 //Exercise.execute();

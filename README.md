@@ -5,7 +5,7 @@ Descripción e implementación de los patrones de diseños GoF
 ## Instalación y ejecución
 
 * Clona el repo
-* instala las dependencias, ejecutando: ```npm run install```
+* instala las dependencias, ejecutando: ```npm install```
 * Ejecuta mediante el comando: ```npm run start```. Para ver la salida, abrir el navegador a la URL: http://localhost:3000
 
 EL código deber ser implementado en el fichero app.ts y en cada guardado se recompila automáticamente, aplicando los cambios
@@ -50,6 +50,5 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 * Chain of responsibility
 * Interpreter
 * Mediator
-* State
 * Strategy
 * Template method
