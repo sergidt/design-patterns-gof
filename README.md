@@ -46,7 +46,6 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 
 * Composite
 * Decorator
-* Flyweight
 * Chain of responsibility
 * Interpreter
 * Mediator

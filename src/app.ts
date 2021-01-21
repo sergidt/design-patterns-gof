@@ -1,4 +1,6 @@
-import { StateTest } from './patterns/behavioral-patterns/state/state';
+import { interval, Observable } from 'rxjs';
+import { delay, map, skip, take } from 'rxjs/operators';
+import { FlyweightTest } from './patterns/structural-patterns/flyweight/flyweight';
 
 console.clear();
 
@@ -20,7 +22,10 @@ console.clear();
 
 // MementoTest.test();
 
-StateTest.test();
+// StateTest.test();
+
+// FlyweightTest.test();
+
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
 //Exercise.execute();
