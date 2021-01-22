@@ -1,11 +1,15 @@
-import { Connectable, DeviceType, ExternalSource, Task } from './definitions';
+import { DeviceType, ExternalSource, Task, TaskExecutor } from './definitions';
 import { Device, ExternalDevice } from './devices';
-import { randomInt, sleep } from './utils';
+import { formatDate, randomInt, sleep } from './utils';
 
-export interface DeviceConnector extends Connectable {
+export interface DeviceConnector extends TaskExecutor {
     name: string;
     lastConnection: number;
     lastDisconnection: number;
+
+    connect(extraMessage?: string);
+
+    disconnect(extraMessage?: string);
 }
 
 export abstract class BaseConnector implements DeviceConnector {
@@ -13,37 +17,31 @@ export abstract class BaseConnector implements DeviceConnector {
     public lastConnection: number;
     public lastDisconnection: number;
 
-    loopCount = 0;
-
     protected constructor(public device: Device) {
         this.name = `${ device.type } Connector: ${ device.name }`;
+        console.log(`%c${ this.name } -- CREATED!!`, 'color: #000088');
     }
 
-    connect() {
-        this.device.connect();
+    protected notificationHandler(message: string) {
+        console.log(`%c[${ this.name }]: ${ message }`, 'color: #1b6a90');
+    }
+
+    connect(extraMessage?: string) {
+        this.device.bind(this.notificationHandler);
         this.lastConnection = new Date().getTime();
-        this.loop();
+        console.log(`%c[${ formatDate(new Date(this.lastConnection)) }]: ${ this.name } CONNECTED - ${ extraMessage || '' }`, 'color: #008800');
     }
 
-    disconnect() {
-        this.device.disconnect();
+    disconnect(extraMessage?: string) {
+        this.device.release();
         this.lastDisconnection = new Date().getTime();
+        console.log(`%c[${ formatDate(new Date(this.lastDisconnection)) }]: ${ this.name } DISCONNECTED - ${ extraMessage || '' }`, 'color: #888800');
     }
 
     executeTask(task: Task) {
         console.log(`%c${ this.name } sending task ${ task.type } to bound device -> ${ this.device.name }`, 'color: #AA0000');
         this.device.executeTask(task);
     }
-
-    private loop() {
-        const randomDelay = randomInt(20000, 40000);
-        if (this.loopCount > 0)
-            console.log(`%c${ this.name } message... `, 'color: #AA00AA');
-
-        this.loopCount++;
-        setTimeout(this.loop.bind(this), randomDelay);
-    }
-
 }
 
 export class ShutterConnector extends BaseConnector {
@@ -51,14 +49,12 @@ export class ShutterConnector extends BaseConnector {
         super(device);
     }
 
-    connect() {
-        super.connect();
-        console.log(`${ this.name }: Shutter engine connected`);
+    connect(extraMessage?: string) {
+        super.connect('Shutter engine connected');
     }
 
-    disconnect() {
-        super.disconnect();
-        console.log(`${ this.name }: Shutter engine disconnected`);
+    disconnect(extraMessage?: string) {
+        super.disconnect('Shutter engine disconnected');
     }
 }
 
@@ -67,14 +63,12 @@ export class LightConnector extends BaseConnector {
         super(device);
     }
 
-    connect() {
-        super.connect();
-        console.log(`${ this.name }: Light connected`);
+    connect(extraMessage?: string) {
+        super.connect('Light connected');
     }
 
-    disconnect() {
-        super.disconnect();
-        console.log(`${ this.name }: Light disconnected`);
+    disconnect(extraMessage?: string) {
+        super.disconnect('Light disconnected');
     }
 }
 
@@ -83,14 +77,12 @@ export class AirConditioningConnector extends BaseConnector {
         super(device);
     }
 
-    connect() {
-        super.connect();
-        console.log(`${ this.name }: Cold and warm systems connected`);
+    connect(extraMessage?: string) {
+        super.connect('Cold and warm systems connected');
     }
 
-    disconnect() {
-        super.disconnect();
-        console.log(`${ this.name }: Cold and warm systems disconnected`);
+    disconnect(extraMessage?: string) {
+        super.disconnect('Cold and warm systems disconnected');
     }
 }
 
@@ -99,14 +91,12 @@ export class AlarmConnector extends BaseConnector {
         super(device);
     }
 
-    connect() {
-        super.connect();
-        console.log(`${ this.name }: All sensors connected`);
+    connect(extraMessage?: string) {
+        super.connect('All sensors connected');
     }
 
-    disconnect() {
-        super.disconnect();
-        console.log(`${ this.name }: All sensors disconnected`);
+    disconnect(extraMessage?: string) {
+        super.disconnect('All sensors disconnected');
     }
 }
 
@@ -123,20 +113,14 @@ export class AlexaProxy extends ExternalConnector {
         super(device);
     }
 
-    async connect() {
+    async connect(extraMessage?: string) {
         this.accessAmazonCloud()
-            .then(() => {
-                super.connect();
-                console.log(`${ this.name }: Connected`);
-            });
+            .then(() => super.connect());
     }
 
-    disconnect() {
+    disconnect(extraMessage?: string) {
         this.disconnectFromAmazonCloud()
-            .then(() => {
-                super.disconnect();
-                console.log(`${ this.name }: Disconnected`);
-            });
+            .then(() => super.disconnect());
     }
 
     private async accessAmazonCloud(): Promise<boolean> {
@@ -153,20 +137,14 @@ export class GoogleHomeProxy extends ExternalConnector {
         super(device);
     }
 
-    async connect() {
+    async connect(extraMessage?: string) {
         this.accessGoogleCloud()
-            .then(() => {
-                super.connect();
-                console.log(`${ this.name }: Connected`);
-            });
+            .then(() => super.connect());
     }
 
-    disconnect() {
+    disconnect(extraMessage?: string) {
         this.disconnectFromGoogleCloud()
-            .then(() => {
-                super.disconnect();
-                console.log(`${ this.name }: Disconnected`);
-            });
+            .then(() => super.disconnect());
     }
 
     private async accessGoogleCloud(): Promise<boolean> {
@@ -183,14 +161,12 @@ export class MusicSystemProxy extends ExternalConnector {
         super(device);
     }
 
-    connect() {
-        this.device.connect();
-        console.log(`${ this.name }: Connected`);
+    connect(extraMessage?: string) {
+        this.device.bind(this.notificationHandler);
     }
 
-    disconnect() {
-        this.device.disconnect();
-        console.log(`${ this.name }: Disconnected`);
+    disconnect(extraMessage?: string) {
+        this.device.release();
     }
 }
 

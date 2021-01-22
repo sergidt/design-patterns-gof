@@ -1,19 +1,45 @@
-import { Connectable, DeviceType, ExternalSource, Task } from './definitions';
+import { DeviceType, ExternalSource, Task, TaskExecutor } from './definitions';
 
-export class Device implements Connectable {
+import { randomInt } from './utils';
+
+export class Device implements TaskExecutor {
+    private notification: (message: string) => void;
+    private loopCount = 0;
+
     constructor(public name: string, public type: DeviceType) {
     }
 
-    connect() {
-        console.log(`%c${ this.name } device ON!`, 'color: #008800');
+    bind(notification: (message: string) => void) {
+        this.notification = notification;
+        this.notification(`${ this.name } device bound!`);
+        this.loop();
     }
 
-    disconnect() {
-        console.log(`%c${ this.name } device OFF!`, 'color: #AA0000');
+    release() {
+        this.notification(`${ this.name } device released!`);
     }
 
     executeTask(task: Task) {
-        console.log(`%c${ this.name } executing task: ${ task.type }`, 'color: #AA0000');
+        this.notification(`${ this.name } executing task: ${ task.type }`);
+    }
+
+    private loop() {
+        function randomMessage() {
+            const MESSAGES = ['SYNCHRONIZING...', 'LOW SIGNAL', 'CHECKING CHANNEL...', 'RUNNING OK!'];
+            return Math.random() > 0.9 ? 'SYNC ERROR!' : MESSAGES[randomInt(0, MESSAGES.length - 1)];
+        }
+
+        const randomDelay = randomInt(30000, 120000);
+        if (this.loopCount > 0)
+            this.notification(`${ this.name } ${ randomMessage() }`);
+
+        this.loopCount++;
+        setTimeout(this.loop.bind(this), randomDelay);
+    }
+
+    private randomMessage() {
+        const MESSAGES = ['SYNCHRONIZING...', 'LOW SIGNAL', 'CHECKING CHANNEL...', 'RUNNING OK!'];
+        return Math.random() > 0.9 ? 'SYNC ERROR!' : MESSAGES[randomInt(0, MESSAGES.length - 1)];
     }
 }
 

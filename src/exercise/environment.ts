@@ -40,8 +40,8 @@ export class EnvironmentBuilder implements HomeAutomationEnvironment {
     }
 
     registerDevices(devices: Array<Device>): HomeAutomationEnvironment {
-        this._config.connectors = devices.map(device => ConnectorFactory.createConnector(device));
         console.log(`%c[EnvironmentBuilder]: ${ devices.length } devices registered!`, 'color: blue');
+        this._config.connectors = devices.map(device => ConnectorFactory.createConnector(device));
         return this;
     }
 

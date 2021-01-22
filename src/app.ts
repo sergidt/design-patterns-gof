@@ -1,6 +1,4 @@
-import { interval, Observable } from 'rxjs';
-import { delay, map, skip, take } from 'rxjs/operators';
-import { FlyweightTest } from './patterns/structural-patterns/flyweight/flyweight';
+import { StrategyTest } from './patterns/behavioral-patterns/strategy/strategy';
 
 console.clear();
 
@@ -25,6 +23,7 @@ console.clear();
 // StateTest.test();
 
 // FlyweightTest.test();
+StrategyTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 

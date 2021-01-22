@@ -27,10 +27,7 @@ export interface Task {
     params?: any;
 }
 
-export interface Connectable {
-    connect();
-
-    disconnect();
+export interface TaskExecutor {
 
     executeTask(task: Task);
 }
