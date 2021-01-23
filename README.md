@@ -44,7 +44,6 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 
 # Falten
 
-* Composite
 * Decorator
 * Chain of responsibility
 * Interpreter

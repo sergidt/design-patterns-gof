@@ -36,11 +36,6 @@ export class Device implements TaskExecutor {
         this.loopCount++;
         setTimeout(this.loop.bind(this), randomDelay);
     }
-
-    private randomMessage() {
-        const MESSAGES = ['SYNCHRONIZING...', 'LOW SIGNAL', 'CHECKING CHANNEL...', 'RUNNING OK!'];
-        return Math.random() > 0.9 ? 'SYNC ERROR!' : MESSAGES[randomInt(0, MESSAGES.length - 1)];
-    }
 }
 
 export class ExternalDevice extends Device {

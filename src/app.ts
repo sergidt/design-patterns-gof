@@ -1,5 +1,3 @@
-import { StrategyTest } from './patterns/behavioral-patterns/strategy/strategy';
-
 console.clear();
 
 // AdapterTest.test();
@@ -23,7 +21,9 @@ console.clear();
 // StateTest.test();
 
 // FlyweightTest.test();
-StrategyTest.test();
+// StrategyTest.test();
+
+// CompositeTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
