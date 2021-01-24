@@ -11,4 +11,4 @@
 * Promover el loose coupling, reduciendo la dependencia que la aplicación tiene contra clases concretas
 * Poder crear familias de objetos relacionados, sin tener que depender de clases concretas
 
-![Abstract Factory pattern](./pattern.png)
+![Abstract Factory pattern](/src/patterns/assets/abstract-factory.png)
