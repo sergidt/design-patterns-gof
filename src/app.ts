@@ -1,3 +1,5 @@
+import { MediatorTest } from './patterns/behavioral-patterns/mediator/mediator';
+
 console.clear();
 
 // AdapterTest.test();
@@ -24,6 +26,8 @@ console.clear();
 // StrategyTest.test();
 
 // CompositeTest.test();
+
+MediatorTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 
