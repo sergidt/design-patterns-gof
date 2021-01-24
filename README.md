@@ -42,9 +42,3 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
         * [Template Method](/src/patterns/behavioral-patterns/template-method/template-method.md)
         * [Visitor](/src/patterns/behavioral-patterns/visitor/visitor.md)
 
-# Falten
-
-* Decorator
-* Chain of responsibility
-* Interpreter
-* Template method
