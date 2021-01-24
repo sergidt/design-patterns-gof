@@ -10,7 +10,7 @@
 
 ### Remote proxy
 
-* El proxy actua como representante de un objeto que está en un sistema externo.
+* El proxy actúa como representante de un objeto que está en un sistema externo.
 * La llamada que ejecuta el proxy se invoca remotamente y el resultado es recibido por el proxy, por tanto, recibido por el cliente.
 
 ### Virtual proxy
@@ -26,7 +26,8 @@
 
 ### Smart proxy:
 
-* Hace operactiones adicionales cuando se tiene que acceder a los objetos destino.
+* Hace operaciones adicionales cuando se tiene que acceder a los objetos destino.
 
 ![Proxy pattern](/src/patterns/assets/proxy.png)
 
+[Volver](/README.md)

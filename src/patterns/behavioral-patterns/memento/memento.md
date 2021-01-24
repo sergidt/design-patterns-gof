@@ -6,3 +6,5 @@
 * Es conocido también como **snapshot pattern**.
 
 ![Memento pattern](/src/patterns/assets/memento.jpg)
+
+[Volver](/README.md)

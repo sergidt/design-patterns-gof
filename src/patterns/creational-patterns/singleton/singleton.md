@@ -12,3 +12,4 @@
 
 ![Singleton pattern](/src/patterns/assets/singleton.png)
 
+[Volver](/README.md)

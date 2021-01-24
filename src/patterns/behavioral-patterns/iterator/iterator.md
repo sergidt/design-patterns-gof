@@ -13,3 +13,5 @@
 * Concrete aggregate: Implementa la definición de *Aggregate* y devuelve una instancia de Concrete iterator.
 
 ![Iterator pattern](/src/patterns/assets/iterator.jpg)
+
+[Volver](/README.md)

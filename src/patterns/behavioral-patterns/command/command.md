@@ -12,4 +12,3 @@
 * Receiver: Receptor y ejecutor de la operación.
 
 ![Command pattern](/src/patterns/assets/command.gif)
-

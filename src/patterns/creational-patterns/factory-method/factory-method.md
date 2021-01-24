@@ -14,3 +14,4 @@
 
 ![Factory Method pattern](/src/patterns/assets/factory-method.png)
 
+[Volver](/README.md)

@@ -10,3 +10,7 @@
 * Separar una clase concreta para cada posible estado de un objeto.
 
 ![State pattern](/src/patterns/assets/state.png)
+
+[Volver](/README.md)
+
+[Volver](/README.md)

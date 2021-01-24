@@ -18,3 +18,5 @@
 * Concrete Observer: Concreción de la clase Observer.
 
 ![Observer pattern](/src/patterns/assets/observer.png)
+
+[Volver](/README.md)

@@ -12,3 +12,5 @@
 * Poder crear familias de objetos relacionados, sin tener que depender de clases concretas
 
 ![Abstract Factory pattern](/src/patterns/assets/abstract-factory.png)
+
+[Volver](/README.md)
