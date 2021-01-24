@@ -16,7 +16,7 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 
 * 23 patrones clasificados en 3 tipos:
     * Creational
-        * [Abstract Factory](src/patterns/creational/abstract-factory/abstract-factory.md)
+        * [Abstract Factory](patterns/creational/abstract-factory/abstract-factory.md)
         * Builder
         * Factory Method
         * Prototype
