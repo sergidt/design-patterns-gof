@@ -10,5 +10,5 @@
 
 * Cuando necesitemos simplificar y unificar una interface grande o un conjunto de ellas
 
-![Facade pattern](pattern.png)
+![Facade pattern](/src/patterns/assets/facade.png)
 

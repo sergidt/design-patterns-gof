@@ -11,4 +11,5 @@
 * Ocultar al cliente la dificultad de crear instancias complejas
 * Poder instanciar objetos cuando su tipo no es conocido
 
-![Prototype pattern](pattern.png)
+![Prototype pattern](/src/patterns/assets/prototype.png)
+

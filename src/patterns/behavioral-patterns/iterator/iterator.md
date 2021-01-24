@@ -12,4 +12,4 @@
 * Aggregate: Suele ser la interface de una colección, que nos define los métodos que usará la clase iterator.
 * Concrete aggregate: Implementa la definición de *Aggregate* y devuelve una instancia de Concrete iterator.
 
-![Iterator pattern](pattern.jpg)
+![Iterator pattern](/src/patterns/assets/iterator.jpg)

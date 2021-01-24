@@ -11,4 +11,5 @@
 * Invoker: Quien invoca el command.
 * Receiver: Receptor y ejecutor de la operación.
 
-![Command pattern](pattern.gif)
+![Command pattern](/src/patterns/assets/command.gif)
+

@@ -13,4 +13,4 @@
 
 * Cuando necesitemos disminuir el acoplamiento que hay en la comunicación entre objetos
 
-![Mediator pattern](pattern.png)
+![Mediator pattern](/src/patterns/assets/mediator.png)

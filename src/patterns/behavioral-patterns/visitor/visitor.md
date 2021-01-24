@@ -14,4 +14,4 @@
 * Concrete Visitable: Implementa la interface Visitable y define la operación de aceptación. El objeto visitor es pasado a este objeto a través de la
   operación de aceptación.
 
-![Visitor pattern](pattern.jpg)
+![Visitor pattern](/src/patterns/assets/visitor.jpg)

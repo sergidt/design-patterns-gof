@@ -28,5 +28,5 @@
 
 * Hace operactiones adicionales cuando se tiene que acceder a los objetos destino.
 
-![Proxy pattern](pattern.png)
+![Proxy pattern](/src/patterns/assets/proxy.png)
 

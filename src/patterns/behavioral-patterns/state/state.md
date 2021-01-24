@@ -9,4 +9,4 @@
 
 * Separar una clase concreta para cada posible estado de un objeto.
 
-![State pattern](pattern.png)
+![State pattern](/src/patterns/assets/state.png)

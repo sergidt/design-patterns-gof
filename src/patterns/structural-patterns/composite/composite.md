@@ -11,6 +11,6 @@
 * Cuando se necesita agregar data a través de la jerarquía
 * Cuando se debe tratar los elementos compuestos y los individuales uniformemente
 
-![Composite pattern](pattern.png)
+![Composite pattern](/src/patterns/assets/composite.png)
 
 [Volver](/README.md)

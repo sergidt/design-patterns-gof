@@ -13,4 +13,4 @@
 * Principalmente cuando necesitamos independencia de implementaciones en clases similares Nos permite seleccionar en run-time la implementación que
   nos interesa
 
-![Bridge pattern](pattern.png)
+![Bridge pattern](/src/patterns/assets/bridge.png)

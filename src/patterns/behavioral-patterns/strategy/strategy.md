@@ -6,4 +6,4 @@
 * Podemos tener diferentes implementaciones de una misma solución.
 * Estas implementaciones son intercambiables sin interrumpir el workflow de la aplicación.
 
-![Strategy pattern](pattern.png)
+![Strategy pattern](/src/patterns/assets/strategy.png)

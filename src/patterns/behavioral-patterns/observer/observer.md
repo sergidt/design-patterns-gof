@@ -17,4 +17,4 @@
 * Observer: Entidad que define las operaciones que nos permitirán la notificación.
 * Concrete Observer: Concreción de la clase Observer.
 
-![Observer pattern](pattern.png)
+![Observer pattern](/src/patterns/assets/observer.png)

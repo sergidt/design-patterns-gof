@@ -12,4 +12,5 @@
 * Promover el loose coupling, reduciendo la dependencia que la aplicación tiene contra clases concretas
 * Permitir a una clase diferir la instanciación de objetos a sus subclases
 
-![Factory Method pattern](pattern.png)
+![Factory Method pattern](/src/patterns/assets/factory-method.png)
+
