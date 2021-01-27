@@ -1,3 +1,5 @@
+import { TemplateMethodTest } from './patterns/behavioral-patterns/template-method/template-method';
+
 console.clear();
 
 // AdapterTest.test();
@@ -28,8 +30,8 @@ console.clear();
 //MediatorTest.test();
 
 // DecoratorTest.test();
-
-// HOME AUTOMATION SYSTEM TEST EXERCISE
+TemplateMethodTest.test()
+;// HOME AUTOMATION SYSTEM TEST EXERCISE
 
 //Exercise.execute();
 
