@@ -1,5 +1,3 @@
-import { ChainOfResponsibilityTest } from './patterns/behavioral-patterns/chain-of-responsibility/chain-of-responsibility';
-
 console.clear();
 
 // AdapterTest.test();
@@ -34,7 +32,7 @@ console.clear();
 
 // InterpreterTest.test();
 
-ChainOfResponsibilityTest.test();
+// ChainOfResponsibilityTest.test();
 
 // HOME AUTOMATION SYSTEM TEST EXERCISE
 

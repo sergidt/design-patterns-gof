@@ -16,29 +16,47 @@ EL código deber ser implementado en el fichero app.ts y en cada guardado se rec
 
 * 23 patrones clasificados en 3 tipos:
     * Creational
-        * [Abstract Factory](/src/patterns/creational-patterns/abstract-factory/abstract-factory.md)
-        * [Builder](/src/patterns/creational-patterns/builder/builder.md)
-        * [Factory Method](/src/patterns/creational-patterns/factory-method/factory-method.md)
-        * [Prototype](/src/patterns/creational-patterns/prototype/prototype.md)
-        * [Singleton](/src/patterns/creational-patterns/singleton/singleton.md)
+        * Abstract Factory
+        * Builder
+        * Factory Method
+        * Prototype
+        * Singleton
     * Structural
-        * [Adapter](/src/patterns/structural-patterns/adapter/adapter.md)
-        * [Bridge](/src/patterns/structural-patterns/bridge/bridge.md)
-        * [Composite](/src/patterns/structural-patterns/composite/composite.md)
-        * [Decorator](/src/patterns/structural-patterns/decorator/decorator.md)
-        * [Facade](/src/patterns/structural-patterns/facade/facade.md)
-        * [Flyweight](/src/patterns/structural-patterns/flyweight/flyweight.md)
-        * [Proxy](/src/patterns/structural-patterns/proxy/proxy.md)
+        * Adapter
+        * Bridge
+        * Composite
+        * Decorator
+        * Facade
+        * Flyweight
+        * Proxy
     * Behavioral
-        * [Chain of Responsibility](/src/patterns/behavioral-patterns/chain-of-responsibility/chain-of-responsibility.md)
-        * [Command](/src/patterns/behavioral-patterns/command/command.md)
-        * [Interpreter](/src/patterns/behavioral-patterns/interpreter/interpreter.md)
-        * [Iterator](/src/patterns/behavioral-patterns/iterator/iterator.md)
-        * [Mediator](/src/patterns/behavioral-patterns/mediator/mediator.md)
-        * [Memento](/src/patterns/behavioral-patterns/memento/memento.md)
-        * [Observer](/src/patterns/behavioral-patterns/observer/observer.md)
-        * [State](/src/patterns/behavioral-patterns/state/state.md)
-        * [Strategy](/src/patterns/behavioral-patterns/strategy/strategy.md)
-        * [Template Method](/src/patterns/behavioral-patterns/template-method/template-method.md)
-        * [Visitor](/src/patterns/behavioral-patterns/visitor/visitor.md)
+        * Chain of Responsibility
+        * Command
+        * Interpreter
+        * Iterator
+        * Mediator
+        * Memento
+        * Observer
+        * State
+        * Strategy
+        * Template Method
+        * Visitor
 
+---
+
+# Creational patterns
+
+## Abstract Factory
+
+### Finalidad
+
+* Proporcionar una interface para crear familias de objetos sin especificar las clases concretas
+* Es como una super-factoría para crear otras factorías
+* Los objetos se crean mediante métodos expuestos en la interface del factory
+
+### Intención
+
+* Promover el loose coupling, reduciendo la dependencia que la aplicación tiene contra clases concretas
+* Poder crear familias de objetos relacionados, sin tener que depender de clases concretas
+
+! Abstract Factory pattern (/src/patterns/assets/abstract-factory.png)
