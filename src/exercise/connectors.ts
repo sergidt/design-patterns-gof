@@ -1,5 +1,6 @@
-import { DeviceType, ExternalSource, Task, TaskExecutor } from './definitions';
+import { DeviceMessage, DeviceMessageType, DeviceType, ExternalSource, Task, TaskExecutor } from './definitions';
 import { Device, ExternalDevice } from './devices';
+import { CriticalIncidentManager, ErrorIncidentManager, Incident, IncidentManagementService, WarningIncidentManager } from './incident-manager';
 import { formatDate, randomInt, sleep } from './utils';
 
 export interface DeviceConnector extends TaskExecutor {
@@ -16,14 +17,41 @@ export abstract class BaseConnector implements DeviceConnector {
     public name: string;
     public lastConnection: number;
     public lastDisconnection: number;
+    static managersCreated = false;
+    static incidentManagementService: IncidentManagementService;
 
     protected constructor(public device: Device) {
+        BaseConnector.createIncidentManagers();
         this.name = `${ device.type } Connector: ${ device.name }`;
         console.log(`%c${ this.name } -- CREATED!!`, 'color: #000088');
     }
 
-    protected notificationHandler(message: string) {
-        console.log(`%c[${ this.name }]: ${ message }`, 'color: #1b6a90');
+    static createIncidentManagers() {
+        if (!BaseConnector.managersCreated) {
+            const warningManager: WarningIncidentManager = new WarningIncidentManager();
+            const errorManager: ErrorIncidentManager = new ErrorIncidentManager();
+            const criticalManager: CriticalIncidentManager = new CriticalIncidentManager();
+
+            BaseConnector.incidentManagementService = new IncidentManagementService();
+            BaseConnector.incidentManagementService.setHandler(warningManager.setNext(errorManager.setNext(criticalManager)));
+            BaseConnector.managersCreated = true;
+        }
+    }
+
+    static getIncidentManagementService(): IncidentManagementService {
+        return BaseConnector.incidentManagementService;
+    }
+
+    protected notificationHandler(message: DeviceMessage) {
+        switch (message.type) {
+            case DeviceMessageType.Log:
+                console.log(`%c[${ this.name }]: ${ message.detail }`, 'color: #1b6a90');
+                break;
+
+            default:
+                BaseConnector.getIncidentManagementService().handleRequest(new Incident(message));
+                break;
+        }
     }
 
     connect(extraMessage?: string) {

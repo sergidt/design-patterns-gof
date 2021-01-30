@@ -28,10 +28,19 @@ export interface Task {
 }
 
 export interface TaskExecutor {
-
     executeTask(task: Task);
 }
 
+export enum DeviceMessageType {
+    Log,
+    Warning,
+    Error,
+    Critical
+}
 
+export interface DeviceMessage {
+    type: DeviceMessageType;
+    detail: string;
+}
 
 
