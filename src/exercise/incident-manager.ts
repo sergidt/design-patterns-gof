@@ -66,9 +66,9 @@ export class WarningIncidentManager implements IncidentManager {
 
     handleRequest(incident: Incident) {
         if (incident.type === DeviceMessageType.Warning) {
-            incident.setConclusion(`WARNING manager: incident treated successfully!`);
+            incident.setConclusion(`WARNING manager: ${ incident.detail } treated successfully!`);
             console.warn(incident.getConclusion());
-        } else if (this.next != null)
+        } else if (!!this.next)
             this.next.handleRequest(incident);
         else
             throw new Error('No manager found for :: ' + incident.type);
@@ -89,9 +89,9 @@ export class ErrorIncidentManager implements IncidentManager {
 
     handleRequest(incident: Incident) {
         if (incident.type === DeviceMessageType.Error) {
-            incident.setConclusion(`ERROR manager: incident treated successfully!`);
+            incident.setConclusion(`ERROR manager: ${ incident.detail } -> treated successfully!`);
             console.error(incident.getConclusion());
-        } else if (this.next != null)
+        } else if (!!this.next)
             this.next.handleRequest(incident);
         else
             throw new Error('No manager found for :: ' + incident.type);
@@ -112,9 +112,9 @@ export class CriticalIncidentManager implements IncidentManager {
 
     handleRequest(incident: Incident) {
         if (incident.type === DeviceMessageType.Critical) {
-            incident.setConclusion(`CRITICAL manager: incident treated successfully!`);
+            incident.setConclusion(`CRITICAL manager: ${ incident.detail } -> treated successfully!`);
             console.error(incident.getConclusion());
-        } else if (this.next != null)
+        } else if (!!this.next)
             this.next.handleRequest(incident);
         else
             throw new Error('No manager found for :: ' + incident.type);
