@@ -30,7 +30,7 @@ class Doctor implements User {
 }
 
 class UserFactory {
-    static createUser(role: Role) {
+    static createUser(role: Role): User {
         switch (role) {
             case Role.Admin:
                 return new Admin();

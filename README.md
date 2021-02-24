@@ -302,7 +302,7 @@ Descripción e implementación de los patrones de diseños GoF
 ### Finalidad
 
 * Nos proporciona una forma de acceso secuencial a los elementos de una agregación de objetos, sin exponer la representación subyacente.
-* Proporciona una interface unificada par arecorret diferentes tipos de colecciones de manera transparente.
+* Proporciona una interface unificada para diferentes tipos de colecciones de manera transparente.
 
 ### Participantes
 

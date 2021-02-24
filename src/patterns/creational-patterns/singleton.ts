@@ -44,6 +44,6 @@ export class SingletonTest {
 
         const singleton2: DatabaseAccessSingleton = DatabaseAccessSingleton.getInstance();
 
-        console.log('same isntance: ', singleton === singleton2);
+        console.log('same instance: ', singleton === singleton2);
     }
 }
