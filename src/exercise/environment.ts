@@ -1,6 +1,8 @@
 // BUILDER PATTERN
 
+import { ConnectorFactory } from './connectors';
 import { HomeAutomationEnvironment, HomeAutomationEnvironmentData, HomeAutomationMode, IDevice } from './definitions';
+import { Device } from './devices';
 
 export class EnvironmentBuilder implements HomeAutomationEnvironment {
     constructor(private _config: HomeAutomationEnvironmentData = {}) {
@@ -11,7 +13,7 @@ export class EnvironmentBuilder implements HomeAutomationEnvironment {
         return this;
     }
 
-    registerDevices(devices: Array<IDevice>): HomeAutomationEnvironment {
+    registerDevices(devices: Array<Device>): HomeAutomationEnvironment {
         console.log(`%c[EnvironmentBuilder]: ${ devices.length } devices registered!`, 'color: blue');
         this._config.connectors = devices.map(device => ConnectorFactory.createConnector(device));
         return this;
