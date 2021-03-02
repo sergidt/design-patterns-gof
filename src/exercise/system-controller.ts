@@ -1,3 +1,5 @@
+// SINGLETON
+
 import { Device } from './devices';
 import { EnvironmentDirector, HomeAutomationEnvironmentData } from './environment';
 
