@@ -2,6 +2,7 @@
 
 import { DeviceConnector, DeviceMessage, DeviceMessageType, DeviceType, ExternalSource, Task } from './definitions';
 import { Device, ExternalDevice } from './devices';
+import { CriticalIncidentManager, ErrorIncidentManager, Incident, IncidentManagementService, WarningIncidentManager } from './incident-manager';
 import { formatDate, randomInt, sleep } from './utils';
 
 export abstract class BaseConnector implements DeviceConnector {

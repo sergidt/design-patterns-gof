@@ -1,7 +1,8 @@
 // SINGLETON
 
+import { HomeAutomationEnvironmentData } from './definitions';
 import { Device } from './devices';
-import { EnvironmentDirector, HomeAutomationEnvironmentData } from './environment';
+import { EnvironmentDirector } from './environment';
 
 export class SystemController {
     private static instance: SystemController;
